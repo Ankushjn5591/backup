@@ -9,6 +9,7 @@ data "azurerm_resource_group" "rg1" {
 
 data "azurerm_virtual_machine" "vm" {
   name     = "vm1"
+  resource_group_name = "ankushrg"
 }
 
 # Define the Recovery Services Vault
