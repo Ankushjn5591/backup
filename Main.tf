@@ -19,13 +19,7 @@ resource "azurerm_recovery_services_vault" "vault" {
   sku                 = "Standard"
 }
 
-# Configure backup for the virtual machine
-resource "azurerm_recovery_services_protected_vm" "backup" {
-  name                = "myvm1backup"
-  resource_group_name = data.azurerm_resource_group.rg1.name
-  recovery_vault_name = azurerm_recovery_services_vault.vault.name
-  source_vm_id        = data.azurerm_virtual_machine.vm.name
-}
+
 
 # Define a backup policy for the virtual machine
 resource "azurerm_recovery_services_protection_policy" "policy" {
@@ -35,7 +29,7 @@ resource "azurerm_recovery_services_protection_policy" "policy" {
 
   backup_policy {
     frequency = "daily"
-    time      = "18:20"
+    time      = "18:25"
     retention_daily {
       count = 5
     }
